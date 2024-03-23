@@ -37,7 +37,7 @@ def generar_puntos_circunferencia(num_puntos, radio):
 
 
 # Ejemplo de uso
-num_puntos = 5
+num_puntos = 10
 radio = 0.05 - 0.001
 distancia_minima = 0.002
 

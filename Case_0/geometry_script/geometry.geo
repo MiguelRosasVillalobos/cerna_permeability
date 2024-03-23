@@ -57,26 +57,3 @@ Plane Surface(7) = {16};
 Extrude {0, 0, l1-a} {
   Surface{7}; 
 }
-//+
-Physical Surface("inlet", 25) = {1};
-//+
-Physical Surface("outlet", 26) = {12};
-//+
-Field[1] = Box;
-
-Field[1].VIn = 0.001;
-
-Field[1].XMin = -rd;
-
-Field[1].XMax = rd;
-
-Field[1].YMin = -rd;
-
-Field[1].YMax = rd;
-
-Field[1].ZMin = l1;
-
-Field[1].ZMax = l1+a;
-
-Background Field = 1;
-//+
