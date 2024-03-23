@@ -8,13 +8,13 @@ dos2unix puntos.csv
 # Leer el archivo CSV de puntos
 while IFS=, read -r x y; do
 	# Agregar la línea al archivo
-	echo "Cylinder($n) = {$x, $y, l1, 0, 0, a, rp, 2*Pi};" >>untitled.geo
+	echo "Cylinder($n) = {$x, $y, l1, 0, 0, a, rp, 2*Pi};" >>geometry.geo
 	n=$((n + 1)) # Incrementar el contador
 done <puntos.csv
 
 # Crear la lista de números
 numeros=""
-for ((i = 1; i <= -1 + n; i++)); do
+for ((i = 1; i <= 2 + n; i++)); do
 	numeros+="$i, "
 done
 
@@ -22,11 +22,11 @@ done
 numeros=${numeros%, *}
 
 # Agregar la línea final con la lista de números
-echo "Physical Volume(\"interior\", 28) = {${numeros}};" >>untitled.geo
+echo "Physical Volume(\"interior\", 28) = {${numeros}};" >>geometry.geo
 
 # Crear la lista de números
 numeros=""
-for ((i = 1; i <= 9 + n; i++)); do
+for ((i = 1; i <= 12 + (n + n + n); i++)); do
 	if [[ $i != 1 && $i != 12 ]]; then
 		numeros+="$i, "
 	fi
@@ -39,12 +39,12 @@ done
 numeros=${numeros%, *}
 
 # Agregar la línea final con la lista de números
-echo "Physical Surface(\"wall\", 27) = {${numeros}};" >>untitled.geo
+echo "Physical Surface(\"wall\", 27) = {${numeros}};" >>geometry.geo
 
 # Crear la lista de números
 numeros=""
 i=14
-while [[ $i -le 11+n ]]; do
+while [[ $i -le 14+n+n+n ]]; do
 	numeros+="$i, $((i + 1)), "
 	i=$((i + 3))
 done
@@ -53,4 +53,4 @@ done
 numeros=${numeros%, *}
 
 # Agregar la línea final con la lista de números
-echo "Physical Surface(\"interiorsurface\", 29) = {${numeros}};" >>untitled.geo
+echo "Physical Surface(\"interiorsurface\", 29) = {${numeros}};" >>geometry.geo

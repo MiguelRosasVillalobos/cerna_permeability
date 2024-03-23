@@ -47,17 +47,17 @@ puntos_circunferencia = generar_puntos_circunferencia(100, 0.05)
 # Extraer coordenadas x, y de los puntos generados y de la circunferencia
 x_coords = [p[0] for p in puntos_generados]
 y_coords = [p[1] for p in puntos_generados]
-x_circunferencia = [p[0] for p in puntos_circunferencia]
-y_circunferencia = [p[1] for p in puntos_circunferencia]
+# x_circunferencia = [p[0] for p in puntos_circunferencia]
+# y_circunferencia = [p[1] for p in puntos_circunferencia]
 
 # Graficar puntos en un scatter plot junto con la circunferencia
-plt.figure(figsize=(6, 6))
-plt.scatter(x_coords, y_coords, color="b")
-plt.plot(x_circunferencia, y_circunferencia, color="r")
-plt.xlim(-radio, radio)
-plt.ylim(-radio, radio)
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
+# plt.figure(figsize=(6, 6))
+# plt.scatter(x_coords, y_coords, color="b")
+# plt.plot(x_circunferencia, y_circunferencia, color="r")
+# plt.xlim(-radio, radio)
+# plt.ylim(-radio, radio)
+# plt.gca().set_aspect("equal", adjustable="box")
+# plt.show()
 # Guardar puntos en un archivo CSV
 with open("puntos.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
