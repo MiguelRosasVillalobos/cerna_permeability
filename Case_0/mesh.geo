@@ -2,10 +2,10 @@ SetFactory("OpenCASCADE");
 v() = ShapeFromFile("./geometry_script/geometry.step");
 BooleanFragments{ Volume{v()}; Delete; }{}
 //+
-lc = 0.01;
+lc = 0.008;
 rd = 0.05;
-l1 = 0.1;
-a = 0.005;
+l1 = 0.2;
+a = 0.001;
 //+
 Mesh.MeshSizeMax = lc;
 //+

@@ -14,6 +14,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+//v = Re * (nu/d);
+
 dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
@@ -27,7 +29,7 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform (0 0 0.00000002);
+        value           uniform (0 0 0.001);
     }
     outlet
     {
