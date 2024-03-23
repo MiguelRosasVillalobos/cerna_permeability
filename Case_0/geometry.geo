@@ -64,7 +64,7 @@ Physical Surface("outlet", 26) = {12};
 //+
 Field[1] = Box;
 
-Field[1].VIn = 0.0005;
+Field[1].VIn = 0.001;
 
 Field[1].XMin = -rd;
 

@@ -39,7 +39,7 @@ done
 numeros=${numeros%, *}
 
 # Agregar la línea final con la lista de números
-echo "Physical Surface(\"wall\", 27) = {${numeros}};" >>geometry.geo
+echo "Physical Surface(\"Wall\", 27) = {${numeros}};" >>geometry.geo
 
 # Crear la lista de números
 numeros=""

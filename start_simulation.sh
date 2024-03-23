@@ -41,10 +41,10 @@ for ((i = 1; i <= $cantidad; i++)); do
 	mv constant/polyMesh/boundary.temp constant/polyMesh/boundary
 
 	# Reemplaza "patch" por "wall" en las líneas 35
-	sed -i '35s/patch/wall/;' "constant/polyMesh/boundary"
+	sed -i '29s/patch/wall/;' "constant/polyMesh/boundary"
 
 	# Reemplaza "patch" por "empty" en las líneas 23
-	sed -i '23s/patch/empty/;' "constant/polyMesh/boundary"
+	sed -i '41s/patch/empty/;' "constant/polyMesh/boundary"
 
 	decomposePar
 	mpirun -np 6 icoFoam -parallel
@@ -53,10 +53,6 @@ for ((i = 1; i <= $cantidad; i++)); do
 	foamToVTK
 
 	rm -rR processor*
-
-	pvbatch "script_paraview_case_$i.py"
-	pvbatch "script_paraview_PlotU1_case_$i.py"
-	pvbatch "script_paraview_PlotU2_case_$i.py"
 
 	mv "animation_case_$i.ogv" ".."
 	mv "animation_PlotU1_case_$i.ogv" ".."
@@ -67,9 +63,6 @@ for ((i = 1; i <= $cantidad; i++)); do
 	mv "geometry.msh" ".."
 	mv "system/" ".."
 	mv "VTK/" ".."
-	mv "script_paraview_case_$i.py" ".."
-	mv "script_paraview_PlotU1_case_$i.py" ".."
-	mv "script_paraview_PlotU2_case_$i.py" ".."
 
 	cd ..
 
@@ -83,13 +76,10 @@ for ((i = 1; i <= $cantidad; i++)); do
 	mv "animation_PlotU2_case_$i.ogv" "$nombre_carpeta/"
 	mv "constant/" "$nombre_carpeta/"
 	mv "0/" "$nombre_carpeta/"
-	mv "geometry_Case_$i.geo" "$nombre_carpeta/"
-	mv "geometry_Case_$i.msh" "$nombre_carpeta/"
+	mv "geometry.geo" "$nombre_carpeta/"
+	mv "geometry.msh" "$nombre_carpeta/"
 	mv "system/" "$nombre_carpeta/"
 	mv "VTK/" "$nombre_carpeta/"
-	mv "script_paraview_case_$i.py" "$nombre_carpeta/"
-	mv "script_paraview_PlotU1_case_$i.py" "$nombre_carpeta/"
-	mv "script_paraview_PlotU2_case_$i.py" "$nombre_carpeta/"
 done
 
 echo "Proceso completado."
