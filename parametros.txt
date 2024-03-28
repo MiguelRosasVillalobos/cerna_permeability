@@ -1,0 +1,38 @@
+//Viscosidad cinematica
+nu = 1.15e-6
+
+//Longitud caracteristica
+d = 0.05
+
+//Reynolds
+Re = 10
+
+//tamano de malla
+lc = 0.008
+
+//tamano de malla refinado
+lcc = 0.001
+
+// radio del ducto
+rd = 0.05
+
+// largo del ducto lado 1
+l1 = 0.2
+
+// espesor de la placa
+a = 0.001 
+
+// radio del poro
+rp = 0.001
+
+//numero de poros
+np = 100
+
+//tiempo de simulacion
+tf = 10
+
+//delta de tiempo
+dt = 0.0001
+
+//escribir resultado cada
+wi = 2
