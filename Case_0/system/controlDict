@@ -22,13 +22,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         10;
+endTime         $tff;
 
-deltaT          0.0005;
+deltaT          $dtt;
 
 writeControl    timeStep;
 
-writeInterval   2;
+writeInterval   $wii;
 
 purgeWrite      0;
 

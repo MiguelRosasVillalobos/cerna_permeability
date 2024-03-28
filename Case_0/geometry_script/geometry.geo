@@ -1,11 +1,11 @@
 //+
 SetFactory("OpenCASCADE");
 //+
-lc = 0.008; //tamano de malla
-rd = 0.05; // radio del ducto
-l1 = 0.2; // largo del ducto lado 1
-a = 0.001; // espesor de la placa
-rp = 0.001; // radio del poro
+lc = $lccc; //tamano de malla
+rd = $rdd; // radio del ducto
+l1 = $l11; // largo del ducto lado 1
+a = $aa; // espesor de la placa
+rp = $rpp; // radio del poro
 //+
 Point(1) = {0, 0, 0, lc};
 //+
