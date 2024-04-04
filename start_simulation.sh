@@ -11,7 +11,7 @@ fi
 cantidad=$1
 # Leer valores desde el archivo parametros.txt
 nu=$(grep -oP 'nu\s*=\s*\K[\d.+-]+' parametros.txt)
-d=$(grep -oP 'd\s*=\s*\K[\d.+-]+' parametros.txt)
+Ld=$(grep -oP 'Ld\s*=\s*\K[\d.+-]+' parametros.txt)
 Re=$(grep -oP 'Re\s*=\s*\K[\d.+-]+' parametros.txt)
 
 lc=$(grep -oP 'lc\s*=\s*\K[\d.+-]+' parametros.txt)
@@ -25,32 +25,6 @@ np=$(grep -oP 'np\s*=\s*\K[\d.+-]+' parametros.txt)
 tf=$(grep -oP 'tf\s*=\s*\K[\d.+-]+' parametros.txt)
 dt=$(grep -oP 'dt\s*=\s*\K[\d.+-]+' parametros.txt)
 wi=$(grep -oP 'wi\s*=\s*\K[\d.+-]+' parametros.txt)
-
-# Reemplazar valores en sus respectivos archivos
-sed -i "s/\$nuu/$nu/g" ./Case_0/0/U
-sed -i "s/\$nuu/$nu/g" ./Case_0/constant/transportProperties
-sed -i "s/\$Ree/$Re/g" ./Case_0/0/U
-sed -i "s/\$LL/$d/g" ./Case_0/0/U
-
-sed -i "s/\$lccc/$lc/g" ./Case_0/mesh.geo
-sed -i "s/\$rdd/$rd/g" ./Case_0/mesh.geo
-sed -i "s/\$l11/$l1/g" ./Case_0/mesh.geo
-sed -i "s/\$aa/$a/g" ./Case_0/mesh.geo
-sed -i "s/\$lcccc/$lcc/g" ./Case_0/mesh.geo
-
-sed -i "s/\$lccc/$lc/g" ./Case_0/geometry_script/geometry.geo
-sed -i "s/\$rdd/$rd/g" ./Case_0/geometry_script/geometry.geo
-sed -i "s/\$l11/$l1/g" ./Case_0/geometry_script/geometry.geo
-sed -i "s/\$aa/$a/g" ./Case_0/geometry_script/geometry.geo
-sed -i "s/\$rpp/$rp/g" ./Case_0/geometry_script/geometry.geo
-
-sed -i "s/\$npp/$np/g" ./Case_0/geometry_script/generator_point_process.py
-sed -i "s/\$rpp/$rp/g" ./Case_0/geometry_script/generator_point_process.py
-sed -i "s/\$rdd/$rd/g" ./Case_0/geometry_script/generator_point_process.py
-
-sed -i "s/\$wii/$wi/g" ./Case_0/system/controlDict
-sed -i "s/\$dtt/$dt/g" ./Case_0/system/controlDict
-sed -i "s/\$tff/$tf/g" ./Case_0/system/controlDict
 
 # Bucle para crear y mover carpetas, editar y genrar mallado
 for ((i = 1; i <= $cantidad; i++)); do
@@ -67,7 +41,35 @@ for ((i = 1; i <= $cantidad; i++)); do
 	cp -r "Case_0/geometry_script/" "$nombre_carpeta/"
 	cp "Case_0/mesh.geo" "$nombre_carpeta/"
 
-	cd "$nombre_carpeta/geometry_script/"
+	cd "$nombre_carpeta/"
+
+	# Reemplazar valores en sus respectivos archivos
+	sed -i "s/\$nuu/$nu/g" ./0/U
+	sed -i "s/\$nuu/$nu/g" ./constant/transportProperties
+	sed -i "s/\$Ree/$Re/g" ./0/U
+	sed -i "s/\$LL/$Ld/g" ./0/U
+
+	sed -i "s/\$lccc/$lc/g" ./mesh.geo
+	sed -i "s/\$rdd/$rd/g" ./mesh.geo
+	sed -i "s/\$l11/$l1/g" ./mesh.geo
+	sed -i "s/\$aa/$a/g" ./mesh.geo
+	sed -i "s/\$lcccc/$lcc/g" ./mesh.geo
+
+	sed -i "s/\$lccc/$lc/g" ./geometry_script/geometry.geo
+	sed -i "s/\$rdd/$rd/g" ./geometry_script/geometry.geo
+	sed -i "s/\$l11/$l1/g" ./geometry_script/geometry.geo
+	sed -i "s/\$aa/$a/g" ./geometry_script/geometry.geo
+	sed -i "s/\$rpp/$rp/g" ./geometry_script/geometry.geo
+
+	sed -i "s/\$npp/$np/g" ./geometry_script/generator_point_process.py
+	sed -i "s/\$rpp/$rp/g" ./geometry_script/generator_point_process.py
+	sed -i "s/\$rdd/$rd/g" ./geometry_script/generator_point_process.py
+
+	sed -i "s/\$wii/$wi/g" ./system/controlDict
+	sed -i "s/\$dtt/$dt/g" ./system/controlDict
+	sed -i "s/\$tff/$tf/g" ./system/controlDict
+
+	cd "./geometry_script/"
 
 	#Generar mallado gmsh
 	python3 generator_point_process.py

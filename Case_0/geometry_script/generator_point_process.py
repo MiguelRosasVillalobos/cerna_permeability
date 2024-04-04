@@ -31,7 +31,6 @@ radio = $rdd - $rpp
 distancia_minima = 2*$rpp
 
 puntos_generados = generar_puntos_en_circulo(num_puntos, radio, distancia_minima)
-puntos_circunferencia = generar_puntos_circunferencia(100, 0.05)
 
 # Extraer coordenadas x, y de los puntos generados y de la circunferencia
 x_coords = [p[0] for p in puntos_generados]

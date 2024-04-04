@@ -1,8 +1,8 @@
 //Viscosidad cinematica
-nu = 1.15e-6
+nu = 0.00000115
 
 //Longitud caracteristica
-d = 0.05
+Ld = 0.05
 
 //Reynolds
 Re = 10
@@ -26,13 +26,13 @@ a = 0.001
 rp = 0.001
 
 //numero de poros
-np = 100
+np = 250
 
 //tiempo de simulacion
 tf = 10
 
 //delta de tiempo
-dt = 0.0001
+dt = 0.001
 
 //escribir resultado cada
-wi = 2
+wi = 10
