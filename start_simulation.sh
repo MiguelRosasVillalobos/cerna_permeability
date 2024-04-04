@@ -1,14 +1,13 @@
-#!/bin/bash
 #Miguel Rosas
 
-# Verifica si se proporciona la cantidad como argumento
+# Verifica si se proporciona la cantidad_simulaciones como argumento
 if [ $# -eq 0 ]; then
-	echo "Uso: $0 cantidad"
+	echo "Uso: $0 cantidad_simulaciones"
 	exit 1
 fi
 
-# Obtiene la cantidad desde el primer argumento
-cantidad=$1
+# Obtiene la cantidad_simulaciones desde el primer argumento
+cantidad_simulaciones=$1
 # Leer valores desde el archivo parametros.txt
 nu=$(grep -oP 'nu\s*=\s*\K[\d.+-]+' parametros.txt)
 Ld=$(grep -oP 'Ld\s*=\s*\K[\d.+-]+' parametros.txt)
@@ -27,21 +26,21 @@ dt=$(grep -oP 'dt\s*=\s*\K[\d.+-]+' parametros.txt)
 wi=$(grep -oP 'wi\s*=\s*\K[\d.+-]+' parametros.txt)
 
 # Bucle para crear y mover carpetas, editar y genrar mallado
-for ((i = 1; i <= $cantidad; i++)); do
+for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 	# Genera el nombre de la carpeta
-	nombre_carpeta="Case_$i"
+	carpeta_caso_i="Case_$i"
 
 	# Crea la carpeta del caso
-	mkdir "$nombre_carpeta"
+	mkdir "$carpeta_caso_i"
 
 	# Copia carpetas del caso dentro de las carpetasgeneradas
-	cp -r "Case_0/0/" "$nombre_carpeta/"
-	cp -r "Case_0/constant/" "$nombre_carpeta/"
-	cp -r "Case_0/system/" "$nombre_carpeta/"
-	cp -r "Case_0/geometry_script/" "$nombre_carpeta/"
-	cp "Case_0/mesh.geo" "$nombre_carpeta/"
+	cp -r "Case_0/0/" "$carpeta_caso_i/"
+	cp -r "Case_0/constant/" "$carpeta_caso_i/"
+	cp -r "Case_0/system/" "$carpeta_caso_i/"
+	cp -r "Case_0/geometry_script/" "$carpeta_caso_i/"
+	cp "Case_0/mesh.geo" "$carpeta_caso_i/"
 
-	cd "$nombre_carpeta/"
+	cd "$carpeta_caso_i/"
 
 	# Reemplazar valores en sus respectivos archivos
 	sed -i "s/\$nuu/$nu/g" ./0/U
@@ -108,15 +107,15 @@ for ((i = 1; i <= $cantidad; i++)); do
 	rm -rR "Case_$i/"
 
 	# Crea la carpeta del caso
-	mkdir "$nombre_carpeta"
+	mkdir "$carpeta_caso_i"
 
-	mv "constant/" "$nombre_carpeta/"
-	mv "0/" "$nombre_carpeta/"
-	mv "geometry_script/" "$nombre_carpeta/"
-	mv "mesh.geo" "$nombre_carpeta/"
-	mv "mesh.msh" "$nombre_carpeta/"
-	mv "system/" "$nombre_carpeta/"
-	mv "VTK/" "$nombre_carpeta/"
+	mv "constant/" "$carpeta_caso_i/"
+	mv "0/" "$carpeta_caso_i/"
+	mv "geometry_script/" "$carpeta_caso_i/"
+	mv "mesh.geo" "$carpeta_caso_i/"
+	mv "mesh.msh" "$carpeta_caso_i/"
+	mv "system/" "$carpeta_caso_i/"
+	mv "VTK/" "$carpeta_caso_i/"
 done
 
 echo "Proceso completado."
