@@ -93,34 +93,30 @@ for ((i = 1; i <= $cantidad; i++)); do
 	reconstructPar
 	foamToVTK
 
-	# rm -rR processor*
-	#
-	# mv "animation_case_$i.ogv" ".."
-	# mv "animation_PlotU1_case_$i.ogv" ".."
-	# mv "animation_PlotU2_case_$i.ogv" ".."
-	# mv "constant/" ".."
-	# mv "0/" ".."
-	# mv "geometry.geo" ".."
-	# mv "geometry.msh" ".."
-	# mv "system/" ".."
-	# mv "VTK/" ".."
-	#
-	# cd ..
-	#
-	# rm -rR "Case_$i/"
-	#
-	# # Crea la carpeta del caso
-	# mkdir "$nombre_carpeta"
-	#
-	# mv "animation_case_$i.ogv" "$nombre_carpeta/"
-	# mv "animation_PlotU1_case_$i.ogv" "$nombre_carpeta/"
-	# mv "animation_PlotU2_case_$i.ogv" "$nombre_carpeta/"
-	# mv "constant/" "$nombre_carpeta/"
-	# mv "0/" "$nombre_carpeta/"
-	# mv "geometry.geo" "$nombre_carpeta/"
-	# mv "geometry.msh" "$nombre_carpeta/"
-	# mv "system/" "$nombre_carpeta/"
-	# mv "VTK/" "$nombre_carpeta/"
+	rm -rR processor*
+
+	mv "constant/" ".."
+	mv "0/" ".."
+	mv "geometry_script/" ".."
+	mv "mesh.geo" ".."
+	mv "mesh.msh" ".."
+	mv "system/" ".."
+	mv "VTK/" ".."
+
+	cd ..
+
+	rm -rR "Case_$i/"
+
+	# Crea la carpeta del caso
+	mkdir "$nombre_carpeta"
+
+	mv "constant/" "$nombre_carpeta/"
+	mv "0/" "$nombre_carpeta/"
+	mv "geometry_script/" "$nombre_carpeta/"
+	mv "mesh.geo" "$nombre_carpeta/"
+	mv "mesh.msh" "$nombre_carpeta/"
+	mv "system/" "$nombre_carpeta/"
+	mv "VTK/" "$nombre_carpeta/"
 done
 
 echo "Proceso completado."

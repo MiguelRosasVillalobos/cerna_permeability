@@ -20,19 +20,19 @@ rd = 0.05
 l1 = 0.2
 
 // espesor de la placa
-a = 0.001 
+a = 0.01 
 
 // radio del poro
 rp = 0.001
 
 //numero de poros
-np = 250
+np = 350
 
 //tiempo de simulacion
-tf = 10
+tf = 1
 
 //delta de tiempo
 dt = 0.001
 
-//escribir resultado cada
+//escribir resultado cada tantos deltas de tiempo
 wi = 10
