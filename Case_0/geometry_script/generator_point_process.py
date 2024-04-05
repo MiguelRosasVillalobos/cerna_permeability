@@ -1,12 +1,11 @@
 import random
 import math
-import matplotlib.pyplot as plt
 import csv
-import numpy as np
-
 
 def generar_puntos_en_circulo(num_puntos, radio, distancia_minima):
     puntos = []
+    puntos_cumplen = 0
+    puntos_no_cumplen = 0
     while len(puntos) < num_puntos:
         x = random.uniform(-radio, radio)
         y = random.uniform(-radio, radio)
@@ -20,17 +19,18 @@ def generar_puntos_en_circulo(num_puntos, radio, distancia_minima):
                     < distancia_minima
                 ):
                     agregar_punto = False
+                    puntos_no_cumplen += 1
                     break
             if agregar_punto:
                 puntos.append((x, y))
-    return puntos
+                puntos_cumplen += 1
+    return puntos, puntos_cumplen, puntos_no_cumplen
 
-# Ejemplo de uso
 num_puntos = $npp
-radio = $rdd - $rpp
+radio = $rdd - 2*$rpp
 distancia_minima = 2*$rpp
 
-puntos_generados = generar_puntos_en_circulo(num_puntos, radio, distancia_minima)
+puntos_generados, puntos_cumplen, puntos_no_cumplen = generar_puntos_en_circulo(num_puntos, radio, distancia_minima)
 
 # Extraer coordenadas x, y de los puntos generados y de la circunferencia
 x_coords = [p[0] for p in puntos_generados]
@@ -41,3 +41,8 @@ with open("puntos.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
     for punto in puntos_generados:
         writer.writerow([punto[0], punto[1]])
+
+# Guardar conteos en un archivo de texto
+with open("conteo_puntos.txt", mode="w") as file:
+    file.write(f"Puntos que cumplen las condiciones: {puntos_cumplen}\n")
+    file.write(f"Puntos que no cumplen las condiciones: {puntos_no_cumplen}\n")
