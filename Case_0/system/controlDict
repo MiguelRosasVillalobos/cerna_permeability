@@ -26,7 +26,7 @@ endTime         $tff;
 
 deltaT          $dtt;
 
-writeControl    timeStep;
+writeControl    adjustableRunTime;
 
 writeInterval   $wii;
 
@@ -34,7 +34,7 @@ purgeWrite      0;
 
 writeFormat     ascii;
 
-writePrecision  6;
+writePrecision  16;
 
 writeCompression off;
 
@@ -42,7 +42,13 @@ timeFormat      general;
 
 timePrecision   6;
 
-runTimeModifiable true;
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+maxCo           0.4;
+
+maxDeltaT       0.1;
 
 
 // ************************************************************************* //
