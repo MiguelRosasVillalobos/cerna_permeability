@@ -5,7 +5,7 @@ nu = 0.00000115 // m^2/s (agua a 20°C)
 Ld = 0.055 // m (radio del ducto)
 
 //Reynolds
-Re = 10 // adimensional
+Re = 600 // adimensional
 
 //tamano de malla
 lc = 0.008 // m
@@ -26,13 +26,13 @@ a = 0.004  // m (Segun placa usada por rodrigo Muñoz)
 rp = 0.003 // m (broca de 6mm)
 
 //numero de poros
-np = 200 // adimensional
+np = 100 // adimensional
 
 //tiempo de simulacion
 tf = 1 // s
 
 //delta de tiempo
-dt = 0.001 // s
+dt = 0.0005 // s
 
 //escribir resultado cada tantos deltas de tiempo
-wi = 10 // adimensional
+wi = 20 // adimensional
